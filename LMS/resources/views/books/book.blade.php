@@ -28,6 +28,9 @@
             <div class="mb-3" style="width: 100%; height: 180px">
                 @if ($book->image)
                     <img src="{{ asset('storage/' . $book->image) }}" alt="{{ $book->name }}" style="width: 100%; height: 100%">
+                @else
+                    <img src="{{ asset('R (8).jpg') }}" alt="{{ $book->name }}" style="width: 100%; height: 100%">
+
                  @endif
             </div>
 

@@ -23,6 +23,9 @@
 
                     @if ($author->image)
                         <img src="{{ asset('storage/' . $author->image) }}" alt="{{ $author->name }}" style="width: 100%; height: 130px">
+                    @else
+                        <img src="{{ asset('OIP (26).jpg') }}" alt="{{ $author->name }}" style="width: 100%; height: 130px">
+
                     @endif
                     {{-- @if ($author->image)
                     <img src="{{asset($author->photo)}}" alt="Author photo" style="height: 150px; border: 1px solid blue">

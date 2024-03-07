@@ -22,10 +22,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema::table('books', function (Blueprint $table) {
-        //     // $table->foreign('category_id')->references('id')->on('categories');
-        //     $table->foreign('author_id')->references('id')->on('authors');
-        // });
     }
 
     /**

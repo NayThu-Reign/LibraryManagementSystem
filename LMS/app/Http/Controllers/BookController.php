@@ -52,7 +52,6 @@ class BookController extends Controller
         $book->body = request()->body;
         $book->category_id = request()->category_id;
         $book->author_id = request()->author_id;
-        // $book->image = request()->image;
         $book->image = $imagePath;
 
         $book->save();
@@ -92,38 +91,13 @@ class BookController extends Controller
         $book->body = request()->body;
         $book->category_id = request()->category_id;
         $book->author_id = request()->author_id;
-        // $book->image = request()->image;
+
         $book->image= $imagePath;
 
         $book->save();
 
         return redirect("/books/detail/$book->id")->with('updated', 'Updated Book Details');
     }
-
-    public function uploadImage(Request $request, $id)
-{
-    $request->validate([
-        'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules as needed
-        // Add more validation rules for other book fields
-    ]);
-
-    // Handle photo upload
-    $path = null;
-    if ($request->hasFile('photo')) {
-        $path = $request->file('photo')->store('public');
-    }
-
-    // Create new book record
-    $book = Book::find($id);
-    // $book->title = $request->title;
-    // $book->author = $request->author;
-    $book->photo = $path;
-    // Set other book attributes
-    $book->save();
-
-    // Redirect back with a success message
-    return back()->with('success', 'Book created successfully.');
-}
 
 
     public function delete($id) {
@@ -136,6 +110,5 @@ class BookController extends Controller
         } else {
             return back()->with('err', 'Unathorize');
         }
-        // return back()->with('err', 'Unathorize');
     }
 }

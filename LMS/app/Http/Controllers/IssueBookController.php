@@ -11,15 +11,6 @@ use Illuminate\Support\Facades\Gate;
 
 class IssueBookController extends Controller
 {
-    // public function __construct() {
-
-    //     $this->middleware(function($request, $next) {
-    //         if(auth()->check() && auth()->user()->roles_id !== 1) {
-    //             abort(403, 'Unthorizes action');
-    //         }
-    //         return $next($request);
-    //     });
-    // }
 
     public function formPage($id) {
         $book = Book::find($id);

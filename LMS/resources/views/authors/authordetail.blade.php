@@ -4,7 +4,10 @@
     <div class="container">
         <div class="author-profile d-flex gap-5 mb-5">
             @if ($author->image)
-             <img src="{{ asset('storage/' . $author->image) }}" alt="{{ $author->name }}" style="width: 150px; height: 180px">
+                <img src="{{ asset('storage/' . $author->image) }}" alt="{{ $author->name }}" style="width: 150px; height: 180px">
+             @else
+                <img src="{{ asset('OIP (26).jpg') }}" alt="{{ $author->name }}" style="width: 150px; height: 180px">
+
             @endif
                 <h1 class="mb-5">{{$author->name}}</h1>
             </div>
@@ -21,6 +24,9 @@
                     <div style="width: 100%; height: 200px">
                         @if ($book->image)
                             <img src="{{ asset('storage/' . $book->image) }}" alt="{{ $book->name }}" style="width: 100%; height: 100%">
+                        @else
+                            <img src="{{ asset('R (8).jpg') }}" alt="{{ $book->name }}" style="width: 100%; height: 100%">
+
                          @endif
                     </div>
                     <h4 class="mt-3 text-center" style="font-weight: bold">{{ $book->title }}</h4>

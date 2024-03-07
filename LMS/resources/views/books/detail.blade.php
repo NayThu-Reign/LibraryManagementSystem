@@ -28,6 +28,9 @@
             <div class="col-2">
                 @if ($book->image)
                     <img src="{{ asset('storage/' . $book->image) }}" alt="{{ $book->name }}" style="width: 200px; height: 300px">
+                @else
+                    <img src="{{ asset('R (8).jpg') }}" alt="{{ $book->name }}" style="width: 200px; height: 300px">
+
                 @endif
             </div>
             <div class="col-10">
