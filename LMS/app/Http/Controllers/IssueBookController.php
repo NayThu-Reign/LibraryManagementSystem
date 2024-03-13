@@ -44,6 +44,7 @@ class IssueBookController extends Controller
         if(Gate::allows('issue-book', $user)) {
             $book = Book::find($id);
             $book->issued = 1;
+            $book->issued_number = $book->issued_number + 1;
             $book->save();
 
             $issueBook = new IssueBook();

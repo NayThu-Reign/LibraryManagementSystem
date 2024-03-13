@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('category_id');
             $table->integer('author_id');
             $table->integer('issued')->default(0);
+            $table->integer('issued_number')->default(0);
             $table->timestamps();
         });
 

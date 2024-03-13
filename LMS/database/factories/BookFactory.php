@@ -20,7 +20,7 @@ class BookFactory extends Factory
             'title' => $this->faker->sentence,
             'body' => $this->faker->paragraph,
             'category_id' => rand(1,4),
-            'author_id' => rand(1,5),
+            'author_id' => rand(1,15),
             // '_id' => rand(1,2),
             // 'image' => rand(1,5),
         ];

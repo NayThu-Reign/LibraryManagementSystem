@@ -13,6 +13,7 @@ use App\Models\Student;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Collection;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,10 +23,13 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
        Book::factory()->count(60)->create();
-       Author::factory()->count(5)->create();
+       Author::factory()->count(15)->create();
 
-       $list = ['News', 'Fiction', 'Science', 'Biography'];
-       foreach($list as $name) {
+       $list = collect( ['News', 'Fiction', 'Science', 'Biography'] );
+
+       $sorted = $list->sort();
+
+       foreach($sorted as $name) {
         Category::create(["name" => $name]);
        }
 

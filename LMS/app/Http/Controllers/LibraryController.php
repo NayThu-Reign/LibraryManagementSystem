@@ -13,6 +13,8 @@ use App\Models\Book;
 use App\Models\Author;
 use App\Models\Category;
 use App\Models\Student;
+use Illuminate\Support\Collection;
+
 
 class LibraryController extends Controller
 {
@@ -27,7 +29,35 @@ class LibraryController extends Controller
     }
 
     public function books() {
-        $books = Book::latest()->paginate(20);
+        $query = Book::query();
+
+        if(request()->has('book')) {
+            $query->where('title', 'like', '%' . request()->input('book') . '%');
+        }
+
+        $books = $query->latest()->paginate(20);
+
+        return view('books.book', [
+            'books' => $books
+        ]);
+    }
+
+    public function oldestBooks() {
+        $query = Book::query();
+
+        if(request()->has('book')) {
+            $query->where('title', 'like', '%' . request()->input('book') . '%');
+        }
+
+        $books = $query->paginate(20);
+        return view('books.book', [
+            'books' => $books
+        ]);
+    }
+
+    public function popularBooks() {
+        $books = Book::where('issued_number', '>=', 2)->paginate(20);
+
         return view('books.book', [
             'books' => $books
         ]);
@@ -42,10 +72,34 @@ class LibraryController extends Controller
     }
 
     public function authors() {
-        $authors = Author::all();
+
+        $query = Author::query();
+
+        if(request()->has('author')) {
+            $query->where('name', 'like', '%' . request()->input('author') . '%');
+        }
+
+        $authors = $query->latest()->paginate(20);
+
 
         return view('authors.author', [
             "authors" => $authors
+        ]);
+    }
+
+    public function authorsByName() {
+        $authors = Author::orderBy('name')->paginate(20);
+
+        return view('authors.author', [
+            'authors' => $authors
+        ]);
+    }
+
+    public function authorsByNameDesc() {
+        $authors = Author::orderBy('name', 'desc')->paginate(20);
+
+        return view('authors.author', [
+            'authors' => $authors
         ]);
     }
 
